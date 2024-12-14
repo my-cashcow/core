@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cashcow-core"
-version = "0.1.0"
+version = "0.0.0"
 description = ""
 authors = ["Soju06 <qlskssk@gmail.com>"]
 license = "MIT"
