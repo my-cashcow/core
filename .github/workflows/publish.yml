@@ -3,14 +3,14 @@ name: Publish Python 🐍 distributions 📦 to PyPI
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
     tags:
       - 'v*.*.*'
 
-  pull_request:
-    branches:
-      - main
+  # pull_request:
+  #   branches:
+  #     - main
 
 jobs:
   pypi-publish:
@@ -23,8 +23,8 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+        # with:
+        #   fetch-depth: 0
           
       - name: Set up Python
         uses: actions/setup-python@v3
