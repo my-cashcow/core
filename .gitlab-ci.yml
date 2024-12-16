@@ -1,0 +1,23 @@
+stages:
+  - publish
+
+publish_package_registry:
+  stage: publish
+  image: python:3.12.7
+  before_script:
+    - pip install poetry==1.8.5
+    - poetry self add "poetry-dynamic-versioning[plugin]"
+  script:
+    - poetry config repositories.gitlab https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/pypi
+    - poetry config pypi-token.gitlab ${CI_JOB_TOKEN}
+    - poetry build
+    - poetry publish -r gitlab
+  only:
+    refs:
+      - main
+      - /^v\d+\.\d+\.\d+$/
+  environment:
+    name: package_registry
+    url: https://gitlab.com/${CI_PROJECT_PATH}/-/packages
+  variables:
+    POETRY_PYPI_TOKEN_GITLAB: "${CI_JOB_TOKEN}" 
