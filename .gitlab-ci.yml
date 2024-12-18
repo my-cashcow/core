@@ -6,7 +6,7 @@ publish_package_registry:
   image: python:3.12.7
   before_script:
     - pip install poetry==1.8.5
-    - poetry self add "poetry-dynamic-versioning[plugin]"
+    - poetry self add "poetry-dynamic-versioning[plugin]==1.4.1"
   script:
     - poetry config repositories.gitlab https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/pypi
     - poetry config http-basic.gitlab gitlab-ci-token ${CI_JOB_TOKEN}
