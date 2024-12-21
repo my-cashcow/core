@@ -3,6 +3,7 @@
 from typing import Any
 
 from sqlalchemy import JSON, Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy.orm import Mapped
 
 from cashcow.constants import ConnectionType
 from cashcow.models.base import ORMModel, TimestampMixin
@@ -15,18 +16,18 @@ class Connection(ORMModel, TimestampMixin):
 
     __tablename__: str = "connections"
 
-    user_id: int = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id: Mapped[int] = Column(Integer, ForeignKey("users.id"), nullable=False)
     """ID of the user"""
 
-    active: bool = Column(Boolean, nullable=False, default=True)
+    active: Mapped[bool] = Column(Boolean, nullable=False, default=True)
     """Whether the connection is active"""
-    name: str = Column(String, nullable=False)
+    name: Mapped[str] = Column(String, nullable=False)
     """Name of the connection"""
-    type: ConnectionType = Column(String, nullable=False)
+    type: Mapped[ConnectionType] = Column(String, nullable=False)
     """Type of the connection"""
-    secret: dict[str, Any] = Column(JSON, nullable=False)
+    secret: Mapped[dict[str, Any]] = Column(JSON, nullable=False)
     """Secret of the connection"""
-    config: dict[str, Any] = Column(JSON, nullable=False, default={})
+    config: Mapped[dict[str, Any]] = Column(JSON, nullable=False, default={})
     """Configuration of the connection"""
 
     def __repr__(self) -> str:
