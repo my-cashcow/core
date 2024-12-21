@@ -8,6 +8,11 @@ from sqlalchemy import Column, DateTime, ForeignKey, Integer, Interval, Numeric,
 from cashcow.constants import AccountType, Currency
 from cashcow.models.base import MetadataMixin, PipelineORMModel, TimestampMixin
 
+__all__: tuple[str, ...] = (
+    "Account",
+    "Transaction",
+)
+
 
 class Account(PipelineORMModel, MetadataMixin):
     """Account model"""

@@ -7,6 +7,8 @@ from sqlalchemy import JSON, Boolean, Column, ForeignKey, Integer, String
 from cashcow.constants import ConnectionType
 from cashcow.models.base import ORMModel, TimestampMixin
 
+__all__: tuple[str, ...] = ("Connection",)
+
 
 class Connection(ORMModel, TimestampMixin):
     """Connection model"""

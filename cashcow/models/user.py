@@ -4,6 +4,8 @@ from sqlalchemy import Column, String
 
 from cashcow.models.base import ORMModel
 
+__all__: tuple[str, ...] = ("User",)
+
 
 class User(ORMModel):
     """User model"""
